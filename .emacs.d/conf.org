@@ -1,0 +1,292 @@
+#+TITLE: Emacs Config File
+
+* Basic config
+#+BEGIN_SRC emacs-lisp
+;;(setq inhibit-startup-message t)
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+(show-paren-mode t)
+(global-display-line-numbers-mode)
+(custom-set-variables
+ '(custom-safe-themes
+   (quote
+    ("84da7b37214b4ac095a55518502dfa82633bee74f64daf6e1785322e77516f96" default))))
+(add-hook 'minibuffer-setup-hook
+          (lambda ()
+            (make-local-variable 'face-remapping-alist)
+            (add-to-list 'face-remapping-alist '(default (:background "#24272D")))))
+#+END_SRC
+
+* Repos
+#+BEGIN_SRC emacs-lisp
+(require 'package)
+(setq package-enable-at-startup nil)
+(add-to-list 'package-archives
+	     '("melpa" . "https://melpa.org/packages/")
+	     '("MELPA Stable" . "http://stable.melpa.org/packages/"))
+
+(package-initialize)
+#+END_SRC
+
+* Some config
+#+BEGIN_SRC emacs-lisp
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+#+END_SRC
+
+* Packages
+** Company
+#+BEGIN_SRC emacs-lisp
+  (use-package company-irony
+    :ensure t)
+  (use-package company-c-headers
+    :ensure t)
+
+  (use-package company-php
+    :ensure t
+    )
+
+  (use-package company-jedi
+    :ensure t)
+
+  (use-package robe
+    :ensure t)
+
+  (use-package company
+    :ensure t
+    :defer t
+    :init
+    (add-hook 'after-init-hook 'global-company-mode)
+    :config (global-company-mode)
+    (add-to-list 'company-backends 'company-irony)
+    (add-to-list 'company-backends 'company-c-headers)
+    (add-to-list 'company-backends 'company-jedi)
+    (add-hook 'ruby-mode-hook 'robe-mode))
+#+END_SRC
+
+** Counsel
+#+BEGIN_SRC emacs-lisp
+(use-package counsel
+  :ensure t
+  )
+#+END_SRC
+
+** Dashboard
+#+BEGIN_SRC emacs-lisp
+  (use-package dashboard
+    :ensure t
+    :config
+    (setq dashboard-center-content t)
+    (setq dashboard-startup-banner 'logo)
+    (setq dashboard-set-heading-icons t)
+    (setq dashboard-set-file-icons t)
+    (dashboard-setup-startup-hook)
+    (add-hook 'dashboard-mode-hook (lambda() (display-line-numbers-mode -1)))
+    (setq dashboard-items '((recents  . 5)
+			    (projects . 5)
+			    (bookmarks . 5)
+			    (agenda . 5)
+			    (registers . 5))))
+#+END_SRC
+
+** Doom-themes
+  #+BEGIN_SRC emacs-lisp
+  (use-package doom-themes
+  :ensure t
+  :config (load-theme 'doom-one))
+#+END_SRC
+
+** Doom modeline
+#+BEGIN_SRC emacs-lisp
+(use-package doom-modeline
+  :ensure t
+  :hook (after-init . doom-modeline-mode))
+#+END_SRC
+
+** Flycheck
+#+BEGIN_SRC emacs-lisp
+    (use-package flycheck
+      :ensure t
+      :init (global-flycheck-mode)
+      :config
+      (add-hook 'after-init-hook #'global-flycheck-mode))
+#+END_SRC
+
+** Git Gutter
+#+BEGIN_SRC emacs-lisp
+   (use-package git-gutter
+     :ensure t
+     :config
+     (global-git-gutter-mode +1)
+     (custom-set-variables
+      '(git-gutter:modified-sign "❘")
+      '(git-gutter:added-sign "❘") 
+      '(git-gutter:deleted-sign "❘"))
+     )
+   
+   
+#+END_SRC
+
+** Hide mode-line
+
+#+BEGIN_SRC emacs-lisp
+  (use-package hide-mode-line
+    :ensure t
+    :config
+    (add-hook 'completion-list-mode-hook #'hide-mode-line-mode)
+    (add-hook 'neotree-mode-hook #'hide-mode-line-mode)
+  )
+#+END_SRC
+
+** Ivy
+#+BEGIN_SRC emacs-lisp
+(use-package ivy
+  :ensure t
+  :config (ivy-mode))
+#+END_SRC
+
+** Org Bullets
+#+BEGIN_SRC emacs-lisp
+(use-package org-bullets
+  :ensure t
+  :config
+  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+#+END_SRC
+
+** Php-mode
+ #+BEGIN_SRC emacs-lisp
+ (use-package php-mode
+ :ensure t)
+ #+END_SRC
+
+** Projectile 
+#+BEGIN_SRC emacs-lisp
+  (use-package projectile
+    :ensure t
+    :config (projectile-mode +1))
+#+END_SRC
+
+** Rainbow delimiters
+#+BEGIN_SRC emacs-lisp
+  (use-package rainbow-delimiters
+    :ensure t
+    :config (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
+#+END_SRC
+
+** Swiper
+#+BEGIN_SRC emacs-lisp
+(use-package swiper
+  :ensure try
+  :config
+  (progn
+    (ivy-mode 1)
+    (setq ivy-use-virtual-buffers t)
+    (global-set-key "\C-s" 'swiper)
+    (global-set-key (kbd "C-c C-r") 'ivy-resume)
+    (global-set-key (kbd "<f6>") 'ivy-resume)
+    (global-set-key (kbd "M-x") 'counsel-M-x)
+    (global-set-key (kbd "C-x C-f") 'counsel-find-file)
+    (global-set-key (kbd "<f1> f") 'counsel-describe-function)
+    (global-set-key (kbd "<f1> v") 'counsel-describe-variable)
+    (global-set-key (kbd "<f1> l") 'counsel-load-library)
+    (global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
+    (global-set-key (kbd "<f2> u") 'counsel-unicode-char)
+    (global-set-key (kbd "C-c g") 'counsel-git)
+    (global-set-key (kbd "C-c j") 'counsel-git-grep)
+    (global-set-key (kbd "C-c k") 'counsel-ag)
+    (global-set-key (kbd "C-x l") 'counsel-locate)
+    (global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
+    (define-key read-expression-map (kbd "C-r") 'counsel-expression-history)
+    ))
+#+END_SRC
+
+** Treemacs
+#+BEGIN_SRC emacs-lisp
+  (use-package treemacs
+    :ensure t
+    :config
+    (global-set-key (kbd "<f9>") 'treemacs)
+    (treemacs-follow-mode t)
+    (setq treemacs-width 35
+	  treemacs-display-in-side-window t
+	  treemacs-indentation-string (propertize " " 'face 'font-lock-comment-face)
+	  treemacs-indentation 1)
+    (add-hook 'treemacs-mode-hook #'hide-mode-line-mode)
+    (add-hook 'treemacs-mode-hook (lambda ()
+				    (linum-mode -1)
+				    (fringe-mode 0)
+				    (setq buffer-face-mode-face `(:background "#24272D"))
+				    (buffer-face-mode 1)))
+    ;; Improve treemacs icons
+    (with-eval-after-load 'treemacs
+      (with-eval-after-load 'all-the-icons
+	(let ((all-the-icons-default-adjust 0)
+	      (tab-width 1))
+	  ;; Root icon
+	  (setq treemacs-icon-root-png
+		(concat (all-the-icons-octicon "repo" :height 0.8 :v-adjust -0.2)  " "))
+	  ;; File icons
+	  (setq treemacs-icon-open-png
+		(concat
+		 (all-the-icons-octicon "chevron-down" :height 0.8 :v-adjust 0.1)
+		 "\t"
+		 (all-the-icons-octicon "file-directory" :v-adjust 0)
+		 "\t")
+		treemacs-icon-closed-png
+		(concat
+		 (all-the-icons-octicon "chevron-right" :height 0.8
+					:v-adjust 0.1 :face 'font-lock-doc-face)
+		 "\t"
+		 (all-the-icons-octicon "file-directory" :v-adjust 0 :face 'font-lock-doc-face)
+		 "\t"))
+	  ;; File type icons
+	  (setq treemacs-icons-hash (make-hash-table :size 200 :test #'equal)
+		treemacs-icon-fallback (concat
+					"\t\t"
+					(all-the-icons-faicon "file-o" :face 'all-the-icons-dsilver
+							      :height 0.8 :v-adjust 0.0)
+					"\t")
+		treemacs-icon-text treemacs-icon-fallback)
+
+	  (dolist (item all-the-icons-icon-alist)
+	    (let* ((extension (car item))
+		   (func (cadr item))
+		   (args (append (list (caddr item)) '(:v-adjust -0.05) (cdddr item)))
+		   (icon (apply func args))
+		   (key (s-replace-all '(("^" . "") ("\\" . "") ("$" . "") ("." . "")) extension))
+		   (value (concat "\t\t" icon "\t")))
+	      (unless (ht-get treemacs-icons-hash (s-replace-regexp "\\?" "" key))
+		(ht-set! treemacs-icons-hash (s-replace-regexp "\\?" "" key) value))
+	      (unless (ht-get treemacs-icons-hash (s-replace-regexp ".\\?" "" key))
+		(ht-set! treemacs-icons-hash (s-replace-regexp ".\\?" "" key) value))))))))
+#+END_SRC
+
+** Treemacs-projectile
+#+BEGIN_SRC emacs-lisp
+(use-package treemacs-projectile
+  :ensure t)
+#+END_SRC
+
+** Try
+#+BEGIN_SRC emacs-lisp
+(use-package try
+  :ensure t)
+#+END_SRC
+
+** Which-key
+#+BEGIN_SRC emacs-lisp
+(use-package which-key
+  :ensure t
+  :config (which-key-mode))
+#+END_SRC
+
+** Yasnippet
+#+BEGIN_SRC emacs-lisp
+  (use-package yasnippet
+    :ensure t
+    :init
+    (yas-global-mode 1))
+#+END_SRC
+
