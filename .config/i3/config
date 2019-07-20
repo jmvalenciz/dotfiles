@@ -286,7 +286,16 @@ mode "$mode_system" {
 #############
 #### Bar ####
 #############
-exec_always --no-startup-id ~/.config/polybar/launch.sh
+bar {
+    separator_symbol " "
+    font pango:Source Code Pro, Icons 9
+    status_command i3blocks
+    colors{
+	background #1E222A
+	focused_workspace #3481b5 #3481b5 #ffffff
+	inactive_workspace #1E222A #1E222A #ffffff
+    }
+}
 
 # Color palette used for the terminal ( ~/.Xresources file )
 # Colors are gathered based on the documentation:
