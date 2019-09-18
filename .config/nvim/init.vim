@@ -40,6 +40,7 @@ Plug 'tpope/vim-eunuch'
 Plug 'jiangmiao/auto-pairs'
 Plug 'airblade/vim-gitgutter'
 Plug 'ryanoasis/vim-devicons'
+Plug 'oblitum/rainbow'
 
 "HIGHLIGHTING
 Plug 'sheerun/vim-polyglot'
@@ -103,3 +104,8 @@ set updatetime=250
 "" airline ""
 """""""""""""
 let g:airline_powerline_fonts = 1
+
+"""""""""""""
+"" rainbow ""
+"""""""""""""
+let g:rainbow_active = 1
