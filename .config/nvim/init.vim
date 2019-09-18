@@ -75,8 +75,8 @@ map <F2> :NERDTreeToggle<CR>
 """"""""""""""""""
 "" Ultisnippets ""
 """"""""""""""""""
-let g:UltiSnipsExpandTrigger = '<Space-j>'
-let g:UltiSnipsJumpForwardTrigger = '<Space-j>'
+let g:UltiSnipsExpandTrigger = '<m-Space>'
+let g:UltiSnipsJumpForwardTrigger = '<m-Space>'
 
 """""""""
 "" ALE ""
