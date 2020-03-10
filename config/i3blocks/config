@@ -59,10 +59,9 @@ BLOCK_BUTTON=pamixer -i 1
 command=date +%T
 interval=1
 
-
-
-
-
-
-
-
+[batterybar]
+command=~/.scripts/battery
+label=bat:
+interval=5
+markup=pango
+min_width=bat: ■■■■■

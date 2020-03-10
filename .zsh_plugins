@@ -1,13 +1,9 @@
-#caarlos0/zsh-mkc
-#zsh-users/zsh-completions
-#caarlos0/zsh-open-github-pr
-
 robbyrussell/oh-my-zsh path:lib
-dikiaap/dotfiles path:.oh-my-zsh/themes/oxide.zsh-theme
+#dikiaap/dotfiles path:.oh-my-zsh/themes/oxide.zsh-theme
 
 zsh-users/zsh-autosuggestions
 zsh-users/zsh-syntax-highlighting
-zsh-users/zsh-docker
+#zsh-users/zsh-docker
 
-#yardnsm/blox-zsh-theme
-#denysdovhan/spaceship-prompt
+#THEME
+romkatv/powerlevel10k

@@ -1,4 +1,3 @@
-rofi.theme:         ~/.config/rofi/themes/nord.rasi
 rofi.modi:          drun,ssh,run
 rofi.font:          Source Code Pro Meduim 13
 #rofi.location:      7
@@ -9,3 +8,4 @@ rofi.columns:       1
 rofi.width:         40
 rofi.lines:         8
 rofi.padding:       25
+rofi.theme: /home/roumin/.config/rofi/themes/nord.rasi
