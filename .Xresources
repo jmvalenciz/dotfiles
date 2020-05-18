@@ -38,10 +38,10 @@
 *.color15: #fdf6e3
 
 !! URxvt Appearance
-URxvt.font: xft:Iosevka:style=Regular:size=12
-URxvt.boldFont: xft:Iosevka:style=Bold:size=12
-URxvt.italicFont: xft:Iosevka:style=Italic:size=12
-URxvt.boldItalicFont: xft:Iosevka:style=Bold Italic:size=12
+URxvt.font: xft:Hack mono:style=Regular:size=12
+URxvt.boldFont: xft:Hack:style=Bold:size=12
+URxvt.italicFont: xft:Hack:style=Italic:size=12
+URxvt.boldItalicFont: xft:Hack:style=Bold Italic:size=12
 URxvt.letterSpace: 0
 URxvt.lineSpace: 0
 URxvt.geometry: 92x24
@@ -73,6 +73,6 @@ URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
 URxvt.keysym.M-Escape: perl:keyboard-select:activate
 URxvt.keysym.M-s: perl:keyboard-select:search
 URxvt.keysym.M-u: perl:url-select:select_next
-URxvt.urlLauncher: firefox
+URxvt.urlLauncher: firefox-developer-edition
 URxvt.underlineURLs: true
 URxvt.urlButton: 1
