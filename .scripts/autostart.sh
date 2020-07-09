@@ -1,8 +1,7 @@
 #!/bin/env sh
 
 setxkbmap latam
-urxvtd -q -o -f
-nm-applet&
 udiskie -an&
-light-locker --lock-on-suspend&
-
+##light-locker --lock-on-suspend&
+pulseaudio --start&
+nitrogen --restore

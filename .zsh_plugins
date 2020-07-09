@@ -3,7 +3,6 @@ robbyrussell/oh-my-zsh path:lib
 
 zsh-users/zsh-autosuggestions
 zsh-users/zsh-syntax-highlighting
-#zsh-users/zsh-docker
 
 #THEME
 romkatv/powerlevel10k
