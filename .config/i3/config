@@ -12,7 +12,7 @@ set $mod Mod4
 ################
 
 bindsym $mod+Shift+q kill
-new_window pixel 2
+new_window pixel 1
 new_float none
 hide_edge_borders none
 bindsym $mod+u border none
@@ -84,6 +84,12 @@ bindsym $mod+minus scratchpad show
 bindsym $mod+Ctrl+Right workspace next
 bindsym $mod+Ctrl+Left workspace prev
 
+## audio
+bindsym XF86AudioRaiseVolume exec pactl set-sink-mute 0 false ; exec pactl set-sink-volume 0 +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-mute 0 false ; exec pactl set-sink-volume 0 -5%
+bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
+bindsym XF86AudioMicMute exec pactl set-source-mute 2 toggle
+
 # Resize window (you can also use the mouse for that)
 bindsym $mod+r mode "resize"
 mode "resize" {
@@ -112,28 +118,8 @@ mode "resize" {
 ###################
 #### Autostart ####
 ###################
-exec --no-startup-id pulseaudio
-exec --no-startup-id urxvtd -q -o -f
-#exec --no-startup-id pa-applet
-exec_always --no-startup-id ~/.config/conky/conky.ini
-exec --no-startup-id setxkbmap -layout latam
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id nitrogen --restore
-exec --no-startup-id compton -bf
-exec --no-startup-id pulseaudio
-# exec --no-startup-id manjaro-hello
-exec --no-startup-id nm-applet
-exec --no-startup-id xfce4-power-manager
-exec --no-startup-id pamac-tray
-exec --no-startup-id clipit
-# exec --no-startup-id blueman-applet
-# exec_always --no-startup-id sbxkb
-# exec --no-startup-id start_conky_green
-exec --no-startup-id xautolock -time 10 -locker betterlockscreen --lock blur
-exec_always --no-startup-id ff-theme-util
-exec_always --no-startup-id fix_xcursor
+exec_always --no-startup-id ~/.scripts/autostart.sh
 exec_always --no-startup-id ~/.config/dunst/dunst.ini
-
 
 
 
@@ -142,23 +128,15 @@ exec_always --no-startup-id ~/.config/dunst/dunst.ini
 #################
 
 #terminal
-bindsym $mod+Return exec urxvtc
+bindsym $mod+Return exec alacritty
 
 #others
-bindsym $mod+Ctrl+m exec pavucontrol
-bindsym $mod+F3 exec firefox-developer-edition
-bindsym $mod+F2 exec thunar
-bindsym $mod+F4 exec emacs
-bindsym $mod+F5 exec lxterminal -e 'glances'
-bindsym $mod+t exec --no-startup-id pkill compton
 bindsym $mod+p exec ~/.config/rofi/run.sh
-bindsym $mod+Ctrl+t exec --no-startup-id compton -bf
 bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
 
 #scrot
-bindsym Print exec --no-startup-id i3-scrot
-bindsym $mod+Print --release exec --no-startup-id i3-scrot -s
-bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
+bindsym Print exec --no-startup-id flameshot
+bindsym $mod+Print --release exec --no-startup-id flameshot gui
 bindsym $mod+Shift+x --release exec --no-startup-id xkill
 
 # reload the configuration file
@@ -273,9 +251,9 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 bindsym $mod+0 mode "$mode_system"
 set $mode_system l-logout | s-suspend | h-hibernate | r-reboot | 0-shutdown
 mode "$mode_system" {
-    bindsym s exec --no-startup-id betterlockscreen --lock blur&&systemctl suspend, mode "default"
+    bindsym s exec --no-startup-id systemctl suspend, mode "default"
     bindsym l exec --no-startup-id i3-msg exit, mode "default"
-    bindsym h exec --no-startup-id betterlockscreen --lock blur&&systemctl hibernate, mode "default"
+    bindsym h exec --no-startup-id systemctl hibernate, mode "default"
     bindsym r exec --no-startup-id reboot, mode "default"
     bindsym 0 exec --no-startup-id poweroff, mode "default"
 
@@ -288,13 +266,21 @@ mode "$mode_system" {
 #### Bar ####
 #############
 bar {
-    separator_symbol " "
-    font pango:Source Code Pro, Icons 9
+    separator_symbol "|"
+    font pango: Icons 8
     status_command i3blocks
-    colors{
-	background #1E222A
-	focused_workspace #3481b5 #3481b5 #ffffff
-	inactive_workspace #1E222A #1E222A #ffffff
+    height 20
+    colors {
+        background #202A2E
+        statusline #F9FAF9
+        separator  #454947
+
+#                          border  backgr. text
+        focused_workspace  #353836 #16a085 #292F34
+        active_workspace   #353836 #353836 #FDF6E3
+        inactive_workspace #353836 #202A2E #EEE8D5
+        binding_mode       #16a085 #2C2C2C #F9FAF9
+        urgent_workspace   #16a085 #FDF6E3 #E5201D
     }
 }
 

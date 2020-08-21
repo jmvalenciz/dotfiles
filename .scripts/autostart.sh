@@ -2,6 +2,9 @@
 
 setxkbmap latam
 udiskie -an&
-##light-locker --lock-on-suspend&
-pulseaudio --start&
-nitrogen --restore
+nm-applet&
+##pulseaudio&
+nitrogen --restore&
+##clipit&
+light-locker --lock-on-suspend
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1&

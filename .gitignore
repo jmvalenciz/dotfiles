@@ -1,1 +1,12 @@
-*~
+.config/pulse
+.config/yay
+.config/gtk*
+.config/pcmanfm
+.config/nitrogen
+.config/libfm
+.config/Dharkael
+.config/dconf
+.config/Code - OSS
+.config/user-dirs.dirs
+.config/user-dirs.locale
+.config/pavucontrol.ini

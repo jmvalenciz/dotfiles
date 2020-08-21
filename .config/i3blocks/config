@@ -1,0 +1,43 @@
+full_text=/
+align=center
+separator=true
+separator_block_width=7
+
+[bandwidth]
+command=~/.scripts/bandwidth
+interval=1
+markup=pango
+label=<span font='FontAwesome'>&#xf1eb;</span>
+#background=#A37ACC
+#INTERFACE=enp0s31f6
+
+[cpu_usage2]
+command=~/.scripts/cpu_usage2
+markup=pango
+interval=persist
+#background=#86B300
+#min_width=CPU 100.00%
+#REFRESH_TIME=1
+LABEL=CPU
+#WARN_PERCENT=50
+#CRIT_PERCENT=80
+#DECIMALS=2
+
+[memory]
+command=~/.scripts/memory
+label=<span font='FontAwesome'>&#xf2db;</span> 
+interval=1
+markup=pango
+#background=#399EE6
+
+[time]
+command=date +%T
+interval=1
+label=<span font='FontAwesome'>&#xf017; </span>
+markup=pango
+
+[battery2]
+command=~/.scripts/battery2
+markup=pango
+interval=30
+instance=BAT1
