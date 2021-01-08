@@ -53,16 +53,23 @@
 ;; You can also try 'gd' (or 'C-c g d') to jump to their definition and see how
 ;; they are implemented.
 
+;;(setq flycheck-check-syntax-automatically 'idle-change)
+;;(setq flycheck-idle-change-delay 1)
+
+(add-hook 'vue-mode-hook #'lsp!)
+
 (setq inhibit-compacting-font-caches t)
 (global-set-key "\C-s" 'swiper)
 (setq org-log-done 'time)
-(setq flycheck-check-syntax-automatically '(
-                                            save
-                                            mode-enabled
-                                            idle-change
-                                            new-line
-                                            new-line
-                                            idle-buffer-switch ))
+(use-package! flycheck
+  :config
+  (setq flycheck-check-syntax-automatically '(mode-enabled save new-line idle-change))
+  (setq flycheck-idle-change-delay 3))
+
+(after! cc-mode
+  (setq-local c-basic-offset 4)
+  (setq-local tab-width 4))
+
 (custom-set-faces
   '(org-level-1 ((t (:inherit outline-1 :height 1.4))))
   '(org-level-2 ((t (:inherit outline-2 :height 1.3))))
@@ -72,9 +79,32 @@
 
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
+(setq tab-width 4)
+(setq c-basic-offset 4)
 (setq indent-line-function 'insert-tab)
-(set-face-attribute 'default nil :height 110)
+(set-frame-font "Fira Code 8" nil t)
+
+;; Rust LSP config
+(setq rustic-lsp-server 'rust-analyzer)
 
 ;; PlantUML Config
 (setq plantuml-executable-path "/usr/bin/plantuml")
 (setq plantuml-default-exec-mode 'executable)
+
+;; Move through windows and swap windows
+(map! :map evil-window-map
+      "SPC" #'rotate-layout
+      ;; Navigation
+      "<left>"     #'evil-window-left
+      "<down>"     #'evil-window-down
+      "<up>"       #'evil-window-up
+      "<right>"    #'evil-window-right
+      ;; Swapping windows
+      "C-<left>"       #'+evil/window-move-left
+      "C-<down>"       #'+evil/window-move-down
+      "C-<up>"         #'+evil/window-move-up
+      "C-<right>"      #'+evil/window-move-right)
+
+
+(setq doom-fallback-buffer-name "► Doom"
+      +doom-dashboard-name "► Doom")

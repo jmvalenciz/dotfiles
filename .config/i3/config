@@ -90,6 +90,10 @@ bindsym XF86AudioLowerVolume exec pactl set-sink-mute 0 false ; exec pactl set-s
 bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
 bindsym XF86AudioMicMute exec pactl set-source-mute 2 toggle
 
+## light
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10
+
 # Resize window (you can also use the mouse for that)
 bindsym $mod+r mode "resize"
 mode "resize" {

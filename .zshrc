@@ -11,10 +11,15 @@ compinit
 source <(antibody init)
 antibody bundle < ~/.zsh_plugins
 
+alias open="xdg-open"
+
+#export CC=clang
+#export CXX=clang++
+export TERM=xterm-256color
 export EDITOR=emacs
 export VISUAL=emacs
 export GOPATH=~/go
-#export PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
+export PATH="$PATH:$HOME/go/bin"
 export PATH="$HOME/.config/composer/vendor/bin:$PATH:$HOME/.cargo/bin:$HOME/bin:$HOME/.local/bin"
 export MYSQL_PS1="\U:\p [\d]: "
 

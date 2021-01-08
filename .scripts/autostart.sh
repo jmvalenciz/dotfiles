@@ -1,10 +1,10 @@
 #!/bin/env sh
 
-setxkbmap latam
+##setxkbmap latam
 udiskie -an&
 nm-applet&
-##pulseaudio&
+#pulseaudio --start&
 nitrogen --restore&
-##clipit&
+clipit&
 light-locker --lock-on-suspend
-/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1&
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1

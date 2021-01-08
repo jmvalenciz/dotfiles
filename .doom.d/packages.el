@@ -52,3 +52,5 @@
 (package! restclient)
 (package! xref-js2)
 (package! ggtags)
+(package! vue-mode)
+
