@@ -1,78 +1,97 @@
-!! Colorscheme
+URxvt*background: #0f111a
+urxvt*foreground:#ffffff
+URxvt*geometry: 80x30
+URxvt*scrollBar: false
 
+
+!-- Xft settings -- !
+Xft.dpi:        96
+Xft.antialias:  true
+Xft.rgba:       rgb
+Xft.hinting:    true
+Xft.hintstyle:  hintfull
+
+! -- Fonts -- !
+  URxvt.font:xft:Monospace-Bold:pixelsize=12.5
+  URxvt.boldfont:xft:Monospace-Bold:pixelsize=12.5
+
+! window padding
+
+URxvt.letterSpace: -1
+URxvt.internalBorder:  10
+
+urxvt.foreground:       #aaaaaa
+
+
+st.opacity:        255
+
+
+*color12: #0D72CA
+*color4: #0D72CA
+
+URxvt*inheritPixmap: true
+URxvt*transparent: true
+! -- URxvt*shading: 0 to 99 darkens, 101 to 200 lightens -- !
+URxvt*shading:0
+
+! -- URxvt.perl-ext-common: ...,tabbed,...  -- !
+
+URxvt.tabbed.tabbar-fg: 4
+URxvt.tabbed.tabbar-bg: 0
+URxvt.tabbed.tab-fg: 3
+URxvt.tabbed.tab-bg: 2
+
+! -- xterm config -- !
+
+
+xterm*faceName: Fira Code Medium Nerd Font Complete Mono
+
+
+xterm*faceSize: 10
+xterm*renderFont: true
+xterm*BorderWidth: 15
+XTerm*selectToClipboard: true
+
+
+ 
+st.borderpx:          15
+st.font:           JetBrainsMono Medium:pixelsize=15 , Material Design Icons :pixelsize =15
 ! special
-*.foreground: #93a1a1
-*.background: #1B1B1B
-*.cursorColor: #afbfbf
+*cursorColor:  #bbc5ff
+
+ 
+*.background: #171a1f  
+ 
+ 
 
 ! black
-*.color0: #263640
-*.color8: #4a697d
+*.color0:       #1E222A
+*.color8:       #434758
 
 ! red
-*.color1: #d12f2c
-*.color9: #fa3935
+*.color1:       #f07178
+*.color9:       #ff8b92
 
 ! green
-*.color2: #819400
-*.color10: #a4bd00
+*.color2:       #c3e88d
+*.color10:      #ddffa7
 
 ! yellow
-*.color3: #b08500
-*.color11: #d9a400
+*.color3:       #ffcb6b
+*.color11:      #ffe585
 
 ! blue
-*.color4: #2587cc
-*.color12: #2ca2f5
+*.color4:       #82aaff
+*.color12:      #9cc4ff
 
 ! magenta
-*.color5: #696ebf
-*.color13: #8086e8
+*.color5:       #c792ea
+*.color13:      #e1acff
 
 ! cyan
-*.color6: #289c93
-*.color14: #33c5ba
+*.color6:       #89ddff
+*.color14:      #a3f7ff
 
 ! white
-*.color7: #bfbaac
-*.color15: #fdf6e3
-
-!! URxvt Appearance
-URxvt.font: xft:Hack Nerd Font Mono:style=Regular:size=12,xft:Deja Vu Sans Mono:pixelsize=15
-URxvt.boldFont: xft:Hack Nerd Font Mono:style=Bold:size=12,xft:Deja Vu Sans Mono:pixelsize=15
-URxvt.italicFont: xft:Hack Nerd Font Mono:style=Italic:size=12,xft:Deja Vu Sans Mono:pixelsize=15
-URxvt.boldItalicFont: xft:Hack Nerd Font Mono:style=Bold Italic:size=12,xft:Deja Vu Sans Mono:pixelsize=15
-URxvt.letterSpace: 0
-URxvt.lineSpace: 0
-URxvt.geometry: 92x24
-URxvt.internalBorder: 5
-URxvt.cursorBlink: true
-URxvt.cursorUnderline: false
-URxvt.saveline: 4096
-URxvt.scrollBar: false
-URxvt.scrollBar_right: false
-URxvt.urgentOnBell: true
-URxvt.depth: 24
-URxvt.iso14755: false
-
-!! Common Keybinds for Navigations
-URxvt.keysym.Shift-Up: command:\033]720;1\007
-URxvt.keysym.Shift-Down: command:\033]721;1\007
-URxvt.keysym.Control-Up: \033[1;5A
-URxvt.keysym.Control-Down: \033[1;5B
-URxvt.keysym.Control-Right: \033[1;5C
-URxvt.keysym.Control-Left: \033[1;5D
-
-!! Copy Paste & Other Extensions
-URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select
-URxvt.copyCommand: xclip -i -selection clipboard
-URxvt.pasteCommand: xclip -o -selection clipboard
-URxvt.keysym.M-c: perl:clipboard:copy
-URxvt.keysym.M-v: perl:clipboard:paste
-URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
-URxvt.keysym.M-Escape: perl:keyboard-select:activate
-URxvt.keysym.M-s: perl:keyboard-select:search
-URxvt.keysym.M-u: perl:url-select:select_next
-URxvt.urlLauncher: firefox-developer-edition
-URxvt.underlineURLs: true
-URxvt.urlButton: 1
+*.color7:       #d0d0d0
+*.color15:      #ffffff

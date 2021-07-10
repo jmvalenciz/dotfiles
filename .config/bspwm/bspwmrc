@@ -1,0 +1,54 @@
+#!/bin/bash
+export SXHKD_SHELL=/bin/bash
+gap=5
+
+pgrep -x sxhkd > /dev/null || sxhkd &
+
+bspc monitor -d 1 2 3 4 5 6 7 8 9
+
+bspc config border_width         2
+bspc config window_gap          12
+
+bspc config split_ratio          0.52
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+bspc config single_monocle true
+bspc config gapless_monocle true
+
+bspc config automatic_scheme automatic
+
+bspc config window_gap $gap;
+bspc config border_width 1
+
+bspc config normal_border_color #1A1A1B 
+bspc config focused_border_color #272729
+bspc config border_radius 	 10
+
+
+# Extra rules 
+bspc rule -a Emacs state=tiled
+
+# Error fixing for java applications
+wmname LG3D
+export _JAVA_AWT_WM_NONREPARENTING=1
+
+# Autostart
+pkill polybar
+~/.config/polybar/launch.sh
+
+pkill udiskie
+udiskie -an&
+
+pkill clipit
+clipit&
+
+nm-applet&
+
+xbacklight -set 50
+nitrogen --restore
+
+#light-locker --lock-on-suspend
+
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+

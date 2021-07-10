@@ -1,0 +1,73 @@
+#!/usr/bin/bash
+# Open the terminal
+super + Return
+  alacritty
+
+# Reload sxhkd
+super + Escape
+    pkill -USR1 -x sxhkd
+
+# Execute Launcher
+super + p
+    ~/.config/rofi/launcher.sh
+
+# quit/restart bspwm
+super + {q,r}
+  bspc {quit,wm -r}
+
+# send the window to the given desktop
+super + shift + {0-9}
+  bspc node -d '^{0-9}' --follow
+
+# Go to specific desktop
+super + {0-9}
+    ~/.config/sxhkd/jump_validator.sh $(bspc query -D -d focused --names) '{0-9}'
+
+# close and kill windows
+super + shift + q
+    bspc node -c
+
+super + shift + x
+    xkill
+
+# preselect the direction
+# we will see that this means in the manual layout
+super + alt + {Up, Down, Left, Right}
+    bspc node -p {north, south, west, east}
+
+# focus the node in the given direction
+super + {_,shift + }{Up, Down, Left, Right}
+	bspc node -{f,s} {north,south,west,east}
+
+
+# change window states
+super + {t,space,f}
+    bspc node -t {tiled,floating,fullscreen}
+
+
+XF86Audio{Prev,Next}
+    mpc -q {prev,next}
+
+XF86AudioPlay
+    mpc -q toggle
+
+XF86AudioRaiseVolume
+    exec pactl set-sink-volume 0 +2%
+
+XF86AudioLowerVolume
+    exec pactl set-sink-volume 0 -2%
+
+XF86AudioMute
+    pactl set-sink-mute 0 toggle
+
+XF86AudioMicMute
+    pactl set-source-mute 1 toggle
+
+XF86MonBrightnessUp
+    xbacklight -inc 5
+
+XF86MonBrightnessDown
+    xbacklight -dec 5
+
+Print
+    flameshot gui

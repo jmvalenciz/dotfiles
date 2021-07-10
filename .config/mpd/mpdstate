@@ -1,0 +1,74 @@
+sw_volume: 70
+audio_device_state:1:pulse
+audio_device_state:1:my_fifo
+state: play
+current: 35
+time: 119.964000
+random: 0
+repeat: 0
+single: 0
+consume: 0
+crossfade: 0
+mixrampdb: 0.000000
+mixrampdelay: -1.000000
+playlist_begin
+0:Rock/ac-dc - back in black.mp3
+1:Rock/ac-dc - back in black.mp3
+2:Rock/All American Rejects - Dirty Little Secret.mp3
+3:Rock/Arctic Monkeys - Do I Wanna Know (Official Video)-bpOSxM0rNPM.opus
+4:Rock/Audioslave - Like a Stone (Official Video)-7QU1nvuxaMA.opus
+5:Rock/Avenged Sevenfold - Malagueña Salerosa-lJBY7iHgXtk.opus
+6:Rock/Black Sabbath -Paranoid Remastered (Video)-sM0_EN6jpJ4.ogg
+7:Rock/Dream on - Aerosmith (Subtitulado)-bAcI7gLxLrM.opus
+8:Rock/Foo Fighters - Everlong-eBG7P-K-r1Y.opus
+9:Rock/Foo Fighters - The Pretender-SBjQ9tuuTJQ.opus
+10:Rock/Franz Ferdinand - Take Me Out-Ijk4j-r7qPA.mp3
+11:Rock/Gorillaz - Clint Eastwood (Official Video)-1V_xRb0x9aw.opus
+12:Rock/Deep Purple - Smoke on the Water-zUwEIt9ez7M.m4a
+13:Rock/Gorillaz - On Melancholy Hill (lyrics)-yjx87opK7Aw.opus
+14:Rock/Green Day - 'Boulevard Of Broken Dreams' - [Official Video]-Soa3gO7tL-c.opus
+15:Rock/Green Day - 'Holiday' - [Official Video]-A1OqtIqzScI.opus
+16:Rock/Green Day - American Idiot [OFFICIAL VIDEO]-Ee_uujKuJMI.opus
+17:Rock/Green Day - Basket Case [Official Music Video]-NUTGr5t3MoY.opus
+18:Rock/Iron Maiden - The Trooper-2G5rfPISIwo.ogg
+19:Rock/Maná - Oye Mi Amor-DcnNeGQHwDc.opus
+20:Rock/Mana- Labios Compartidos Letra-eUHvNcJaWVU.opus
+21:Rock/Mark Ronson - Uptown Funk ft. Bruno Mars-OPf0YbXqDm0.opus
+22:Rock/Metallica - Enter Sandman [Official Music Video]-CD-E-LDc384.opus
+23:Rock/Metallica - Nothing Else Matters [Official Music Video]-tAGnKpE4NCI.opus
+24:Rock/Metallica - One [Official Music Video]-WM8bTdBs-cw.opus
+25:Rock/Metallica-Master Of Puppets (Lyrics)-xnKhsTXoKCI.opus
+26:Rock/Modest_mouse-Float_On.mp3
+27:Rock/Molinos de Viento - Mägo de Oz.mp3
+28:Rock/Muse - hysteria.mp3
+29:Rock/Muse - Starlight [Official Music Video]-Pgum6OT_VH8.mp3
+30:Rock/Nirvana - In Bloom-PbgKEjNBHqM.opus
+31:Rock/Nirvana - Smells Like Teen Spirit-hTWKbfoikeg.opus
+32:Rock/PRELUDIO OBSESIVO - RATA BLANCA.mp3
+33:Rock/Queens Of The Stone Age - No One Knows-s88r_q7oufE.mp3
+34:Rock/R.E.M. - Losing My Religion (Official Music Video)-xwtdhWltSIg.opus
+35:Rock/Radiohead Creep Subtitulada Español Inglés-TmoeqeYOm60.opus
+36:Rock/Rammstein - Du Hast (Official Video)-W3q8Od5qJio.opus
+37:Rock/Rata Blanca   La Leyenda Del Hada y El Mago.mp3
+38:Rock/Rata Blanca - preludio obsesivo.mp3
+39:Rock/Rata Blanca 'Mujer Amante' Video ofical-ttsSJWldx_I.opus
+40:Rock/Slipknot - Before I Forget [OFFICIAL VIDEO]-qw2LU1yS7aw.opus
+41:Rock/Slipknot - Duality [OFFICIAL VIDEO]-6fVE8kSM43I.opus
+42:Rock/Soda stereo-De musica Ligera (original)-IibXYWSBpZw.opus
+43:Rock/Stuck In the Sound - Let's Go [Official Video]-52Gg9CqhbP8.opus
+44:Rock/Sum 41 - In Too Deep-emGri7i8Y2Y.opus
+45:Rock/System Of A Down - B.Y.O.B. (Video)-zUzd9KyIDrM.ogg
+46:Rock/System Of A Down - Chop Suey! (sub. español-ingles)-e0GzV7OMSS8.opus
+47:Rock/System Of A Down - Toxicity-iywaBOMvYLI.opus
+48:Rock/The All American Rejects - Move Along.mp3
+49:Rock/The Cranberries - Zombie-6Ejga4kJUts.opus
+50:Rock/The Kill (Bury Me) - 30 Seconds To Mars [lyrics] HQ-JjPIOuFtWAI.ogg
+51:Rock/The Killers - Mr. Brightside-gGdGFtwCNBE.opus
+52:Rock/The Rolling Stones - Paint It, Black (Official Lyric Video)-O4irXQhgMqg.m4a
+53:Rock/The Strokes - Reptilia-b8-tXG8KrWs.opus
+54:Rock/Muse - Knights Of Cydonia.mp3
+55:Rock/mp3_Muse_-_Uprising.mp3
+56:Rock/Muse - plug in baby.mp3
+57:Rock/Muse - plug in baby.mp3
+58:Rock/Gorillaz - On Melancholy Hill.opus
+playlist_end

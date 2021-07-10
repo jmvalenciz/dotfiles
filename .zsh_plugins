@@ -1,8 +1,0 @@
-robbyrussell/oh-my-zsh path:lib
-#dikiaap/dotfiles path:.oh-my-zsh/themes/oxide.zsh-theme
-
-zsh-users/zsh-autosuggestions
-zsh-users/zsh-syntax-highlighting
-
-#THEME
-romkatv/powerlevel10k
