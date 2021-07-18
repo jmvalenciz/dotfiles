@@ -8,17 +8,17 @@ function before(){
     tmux select-window -t $session:0
 }
 
-#function onRust(){
-#        
-#}
-#
+function onRust(){
+    echo "Rust"
+}
+
 #function onDockerfile(){
 #        
 #}
 #
-#function onNode(){
-#    
-#}
+function onNode(){
+     echo "Node"   
+}
 #
 #function onPhp(){
 #

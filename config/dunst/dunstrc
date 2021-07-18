@@ -1,19 +1,19 @@
 [frame]
-    width = 0
-    color = "#212121"
+    width = 3
+    color = "#665C54"
 
 [urgency_low]
-    background = "#000000"
-    foreground = "#ffffff"
+    background = "#282828"
+    foreground = "#BDAE93"
     timeout = 10
 
 [urgency_normal]
-    background = "#212121"
+    background = "#282828"
     foreground = "#ffffff"
     timeout = 10
 
 [urgency_critical]
-    background = "#fbc02d"
+    background = "#282828"
     foreground = "#000000"
     timeout = 0
 
@@ -52,7 +52,7 @@
     show_indicators = no        # Display indicators for URLs (U) and actions (A)
     line_height = 0             # The spacing between lines (forced to height of font at minimum)
     notification_height = 0     # The height of the entire notification (forced to height of font height and padding at minimum)
-    separator_height = 2        # Space in pixels between two notifications
+    separator_height = 6        # Space in pixels between two notifications
     padding = 8                 # Padding between text and separator
     horizontal_padding = 8      # Horizontal padding
     separator_color = frame     # Color for separator: auto/foreground/frame/X color

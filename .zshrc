@@ -18,7 +18,7 @@ alias la="ls -la"
 alias ll="ls -l"
 alias htop="btm"
 alias cat="bat"
-alias tmux="tmux -u"
+alias tmux="tmux -2 -u -f ~/.config/tmux/tmux.conf"
 alias vim="nvim"
 alias paru="paru --bottomup"
 #alias docker="podman"
@@ -27,23 +27,25 @@ alias paru="paru --bottomup"
 alias bc="bc -l"
 alias cal="cal --monday"
 alias :q="exit"
+alias sudo="doas"
 
 # To correct ghost characters using double-width characters with starship.rs
 export LC_ALL=en_US.UTF-8
 
-export CC=clang
-export CXX=clang++
 export TERM=xterm-256color
 export EDITOR=nvim
 export VISUAL=nvim
 export GOPATH=~/go
 export PATH="$PATH:$HOME/go/bin"
-export PATH="$HOME/.config/composer/vendor/bin:$PATH:$HOME/.cargo/bin:$HOME/bin:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.config/composer/vendor/bin"
+export PATH="$PATH:$HOME/.cargo/bin"
+export PATH="$PATH:$HOME/.local/bin"
 export MYSQL_PS1="\U:\p [\d]: "
 export MANPAGER="sh -c 'sed -e s/.\\\\x08//g | bat -l Manpage -p'"
 export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+
 # Temporary workaround to ':w !sudo tee %' in nvim
-export SUDO_ASKPASS='/usr/lib/ssh/x11-ssh-askpass'.
+export SUDO_ASKPASS='/usr/lib/ssh/x11-ssh-askpass'
 
 # Hisotry is not being read with zinit so I have to define HISTFILE manually
 HISTFILE=~/.zsh_history

@@ -45,6 +45,9 @@ vim.o.autoindent = true
 vim.cmd('au BufNewFile,BufReadPost *.md set filetype=markdown')
 vim.g.markdown_fenced_languages = {'css', 'erb=eruby', 'javascript', 'js=javascript', 'json=javascript', 'ruby', 'sass', 'xml', 'html', 'bash'}
 
+-- enable comments in json
+vim.cmd('au BufNewFile,BufRead *.json set filetype=jsonc')
+
 -- Completion
 vim.o.shortmess = vim.o.shortmess..'c'
 vim.o.completeopt = 'menuone,noinsert,noselect'
