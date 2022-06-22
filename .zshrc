@@ -7,32 +7,58 @@
 #                           #
 #############################
 
+### Added by Zinit's installer
+if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
+    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
+    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
+        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
+        print -P "%F{160}▓▒░ The clone has failed.%f%b"
+fi
+
+source "$HOME/.zinit/bin/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+### End of Zinit's installer chunk
+
+zinit light zsh-users/zsh-autosuggestions
+zinit light zdharma/fast-syntax-highlighting
+zinit light zsh-users/zsh-history-substring-search
+
 autoload -U compinit 
+autoload -Uz select-word-style
+autoload edit-command-line
+
 compinit
+select-word-style bash
+
 
 eval "$(starship init zsh)"
 
+alias sudo="doas"
+alias ssh="kitty +kitten ssh"
 alias open="xdg-open"
-alias ls="exa"
+alias ls="exa -Hh"
 alias la="ls -la"
 alias ll="ls -l"
 alias htop="btm"
 alias cat="bat"
 alias tmux="tmux -2 -u -f ~/.config/tmux/tmux.conf"
-alias vim="nvim"
+#alias vim="nvim"
 alias paru="paru --bottomup"
+alias crontab="fcrontab"
 #alias docker="podman"
 #alias docker-compose="podman-compose"
 #alias kubectl="microk8s.kubectl"
-alias bc="bc -l"
-alias cal="cal --monday"
+alias bc="bc -lq"
 alias :q="exit"
-alias sudo="doas"
+alias code="codium"
+    #alias sudo="doas"
 
 # To correct ghost characters using double-width characters with starship.rs
-export LC_ALL=en_US.UTF-8
+#export LC_ALL=en_US.UTF-8
 
-export TERM=xterm-256color
+export TERM=xterm-kitty
 export EDITOR=nvim
 export VISUAL=nvim
 export GOPATH=~/go
@@ -52,6 +78,14 @@ HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 setopt appendhistory
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_FIND_NO_DUPS
+setopt HIST_SAVE_NO_DUPS
+
+zle_highlight=('paste:none')
 
 # completion menu
 zmodload zsh/complist
@@ -66,32 +100,28 @@ eval $(env TERM=xterm256-color dircolors)
 eval "$(dircolors)"
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
+zle -N edit-command-line
+zle -N backward-kill-space-word backward-kill-word-match
+zle -N kill-space-word kill-word-match
+zstyle :zle:backward-kill-space-word word-style space
+zstyle :zle:kill-space-word word-style space
+
 # Key Bindings
+bindkey "^E" edit-command-line
 bindkey "^[[1;5C" forward-word
+bindkey "^[[1;3C" forward-word
 bindkey "^[[1;5D" backward-word
-bindkey "^[[3;5~" kill-word
-bindkey "^H" backward-kill-word
+bindkey "^[[1;3D" backward-word
+bindkey "^[[3;5~" kill-space-word
+#bindkey "^W" backward-kill-space-word
 bindkey "^[[H" beginning-of-line
 bindkey "^[[F" end-of-line
 bindkey '^[[3~' delete-char
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-### Added by Zinit's installer
-if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
-    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
-    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
-    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
-        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
-        print -P "%F{160}▓▒░ The clone has failed.%f%b"
-fi
+HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND=default
+HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND=default
 
-source "$HOME/.zinit/bin/zinit.zsh"
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
-### End of Zinit's installer chunk
-
-#zinit snippet OMZ::lib/git.zsh
-zinit light zsh-users/zsh-autosuggestions
-#zinit light zsh-users/zsh-syntax-highlighting
-zinit light zdharma/fast-syntax-highlighting
