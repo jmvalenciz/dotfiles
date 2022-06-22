@@ -6,7 +6,6 @@ require('gitsigns').setup{
         topdelete    = {hl = 'GitSignsDelete', text = '‾', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
         changedelete = {hl = 'GitSignsChange', text = '~', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
     },
-    status_formatter = nil,
-    use_decoration_api = true,
-    use_internal_diff = true
+    status_formatter = nil
 }
+

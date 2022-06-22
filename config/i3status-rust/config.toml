@@ -1,0 +1,46 @@
+theme = "dracula"
+icons = "awesome"
+
+[[block]]
+block = "focused_window"
+max_width = 40
+show_marks = "visible"
+
+[[block]]
+block = "memory"
+display_type = "memory"
+format_mem = "{mem_used}/{mem_total}"
+interval = 1
+
+[[block]]
+block = "cpu"
+interval = 1
+
+[[block]]
+block = "battery"
+interval = 10
+format = "{percentage}"
+device="BAT0"
+
+[[block]]
+block = "music"
+#player = "spotify"
+buttons = ["prev", "play", "next"]
+on_click = "alacritty -e ncmpcpp"
+
+[[block]]
+block = "net"
+device = "wlo1"
+format = "{signal_strength} {speed_down; K*B} {speed_up; K*B}"
+interval = 1
+
+[[block]]
+block = "sound"
+format = "{volume}"
+headphones_indicator=true
+
+[[block]]
+block = "time"
+interval = 1
+format = "%H:%M:%S"
+

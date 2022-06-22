@@ -1,17 +1,30 @@
---------------------------------------------------------------------
---     _   __      _                ______            _____       --
---    / | / /   __(_)___ ___       / ____/___  ____  / __(_)___ _ --
---   /  |/ / | / / / __ `__ \     / /   / __ \/ __ \/ /_/ / __ `/ --
---  / /|  /| |/ / / / / / / /    / /___/ /_/ / / / / __/ / /_/ /  --
--- /_/ |_/ |___/_/_/ /_/ /_/     \____/\____/_/ /_/_/ /_/\__, /   --
---                                                      /____/    --
---------------------------------------------------------------------
+"--------------------------------------------------------------------
+"--     _   __      _                ______            _____       --
+"--    / | / /   __(_)___ ___       / ____/___  ____  / __(_)___ _ --
+"--   /  |/ / | / / / __ `__ \     / /   / __ \/ __ \/ /_/ / __ `/ --
+"--  / /|  /| |/ / / / / / / /    / /___/ /_/ / / / / __/ / /_/ /  --
+"-- /_/ |_/ |___/_/_/ /_/ /_/     \____/\____/_/ /_/_/ /_/\__, /   --
+"--                                                      /____/    --
+"--------------------------------------------------------------------
+
+autocmd BufNewFile,BufRead *.rasi :set filetype=css
+autocmd BufNewFile,BufRead *.tf :set filetype=terraform
+autocmd BufNewFile,BufRead *_Dockerfile :set filetype=dockerfile
+autocmd ColorScheme *
+      \ hi UnusedHighlight ctermbg=NONE guibg=NONE guifg=#808080
+let &t_Cs = "\e[4:3m"
+let &t_Ce = "\e[4:0m"
+
+hi Error gui=undercurl
+
+lua << EOF
 
 --Remap space as leader key
-vim.api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true, silent=true})
+vim.cmd[[nnoremap <SPACE> <Nop>]]
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+vim.cmd('set mouse=a')
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.cursorline = true
@@ -34,12 +47,15 @@ vim.o.softtabstop = 4
 vim.o.shiftround = true
 vim.o.expandtab = true
 vim.o.hidden = true
-vim.o.spelllang = 'en,es'
+vim.o.spelllang = 'en,es,cjk'
 vim.o.termguicolors = true
 vim.o.background = 'dark'
-vim.o.wrap= false
+vim.o.wrap= true
 vim.o.showmode = false
 vim.o.autoindent = true
+--vim.cmd("let vimwiki.nested_syntaxes = {'python': 'python', 'c++': 'cpp'}")
+require('packerConfig')
+
 
 -- proper syntax highlighting for Mardown
 vim.cmd('au BufNewFile,BufReadPost *.md set filetype=markdown')
@@ -55,16 +71,14 @@ vim.o.completeopt = 'menuone,noinsert,noselect'
 -- avoid :terminal to show line numbers
 vim.cmd('autocmd TermOpen * setlocal nonumber norelativenumber')
 
-vim.cmd('syntax enable')
+--vim.cmd('syntax enable')
 vim.cmd('filetype plugin indent on')
 
 -- Auto compile when there are changes in plugins.lua
 vim.cmd 'autocmd BufWritePost plugins.lua PackerCompile' 
 
-require('packerConfig')
 
--- blankline
-vim.g.indent_blankline_char = "│"
-vim.g.indent_blankline_filetype_exclude = { 'help', 'packer' }
-vim.g.indent_blankline_buftype_exclude = { 'terminal', 'nofile'}
-vim.g.indent_blankline_char_highlight = 'LineNr'
+EOF
+
+" source vimwiki.vim
+
