@@ -4,8 +4,8 @@ require'lualine'.setup {
     theme = 'tokyonight',
     --component_separators = {'', ''},
     --section_separators = {'', ''},
-    --component_separators = {'|', '|'},
-    --section_separators = {'', ''},
+    component_separators = {'|', '|'},
+    section_separators = {'', ''},
     disabled_filetypes = {},
     always_divide_middle = true
   },
@@ -47,6 +47,5 @@ require'lualine'.setup {
   extensions = {
       'quickfix',
       'nvim-tree',
-      'fugitive'
   }
 }

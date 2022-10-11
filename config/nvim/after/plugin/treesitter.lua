@@ -5,14 +5,6 @@ require 'nvim-treesitter.configs'.setup {
         use_languagetree = true,
         disable = {"cmake"}
     },
-    rainbow = {
-        enable= true,
-        extended_mode = false,
-        max_file_lines = 1000,
-    },
-    indent = {
-        enable = false,
-    },
     autotag = {
         enable = true,
     },

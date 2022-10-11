@@ -1,30 +1,6 @@
-vim.g.nvim_tree_add_trailing = 0 -- append a trailing slash to folder names
-vim.g.nvim_tree_highlight_opened_files = 1
-vim.g.nvim_tree_root_folder_modifier = table.concat { ":t:gs?$?/..", string.rep(" ", 1000), "?:gs?^??" }
-vim.g.nvim_tree_git_hl = 1
 
 vim.cmd[[nnoremap <leader>ft :NvimTreeToggle<CR>]]
 
-vim.g.nvim_tree_show_icons = {
-    folders = 1,
-    folder_arrows= 1,
-    files = 1,
-}
-
-vim.g.nvim_tree_icons = {
-    default = "",
-    symlink = "",
-    folder = {
-        arrow_open = "",
-        arrow_closed = "",
-        default = "",
-        empty = "", -- 
-        empty_open = "",
-        open = "",
-        symlink = "",
-        symlink_open = "",
-    },
-}
 vim.cmd[[autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif]]
 require'nvim-tree'.setup {
     filters = {
@@ -63,6 +39,31 @@ require'nvim-tree'.setup {
     renderer = {
         indent_markers = {
             enable= false
+        },
+        highlight_git = true,
+        add_trailing = false,
+        root_folder_modifier = table.concat { ":t:gs?$?/..", string.rep(" ", 1000), "?:gs?^??" },
+        highlight_opened_files = "icon",
+        icons={
+            show = {
+                folder = true,
+                folder_arrow = true,
+                file = true,
+            },
+            glyphs={
+                default = "",
+                symlink = "",
+                folder = {
+                    arrow_open = "",
+                    arrow_closed = "",
+                    default = "",
+                    empty = "", -- 
+                    empty_open = "",
+                    open = "",
+                    symlink = "",
+                    symlink_open = "",
+                },
+            }
         }
     }
 }

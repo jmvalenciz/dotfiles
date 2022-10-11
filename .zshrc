@@ -57,7 +57,7 @@ alias code="codium"
 
 # To correct ghost characters using double-width characters with starship.rs
 #export LC_ALL=en_US.UTF-8
-
+export WORDCHARS="*?_-.[]~=&;!#$%^{}<>"
 export TERM=xterm-kitty
 export EDITOR=nvim
 export VISUAL=nvim
