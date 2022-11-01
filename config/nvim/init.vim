@@ -13,11 +13,11 @@ autocmd BufNewFile,BufRead *.tf :set filetype=terraform
 autocmd BufNewFile,BufRead *_Dockerfile :set filetype=dockerfile
 autocmd ColorScheme *
       \ hi UnusedHighlight ctermbg=NONE guibg=NONE guifg=#808080
-let &t_Cs = "\e[4:3m"
-let &t_Ce = "\e[4:0m"
-
+"let &t_Cs = "\e[4:3m"
+"let &t_Ce = "\e[4:0m"
+highlight! DiagnosticLineNrHint guibg=#1E205D guifg=#0000FF gui=bold
 hi Error gui=undercurl
-
+hi Warning gui=underline
 lua << EOF
 
 --Remap space as leader key
@@ -25,14 +25,15 @@ vim.cmd[[nnoremap <SPACE> <Nop>]]
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-
+vim.o.title=true
+vim.o.titlestring="NVIM - %{fnamemodify(getcwd(),':t')}"
 --vim.o.backup=true
 --vim.backupdir = "~/.local/share/nvim/backup//"
 vim.cmd('set mouse=a')
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.cursorline = true
-vim.o.colorcolumn = '80'
+vim.o.colorcolumn = '95'
 vim.o.signcolumn = 'yes'
 vim.o.updatetime = 500
 vim.o.lazyredraw = true
@@ -42,7 +43,7 @@ vim.o.breakindent = true
 vim.o.hidden = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
-vim.o.hlsearch = false
+vim.o.hlsearch = true
 vim.o.incsearch = true
 vim.o.undofile = true
 vim.o.tabstop = 4

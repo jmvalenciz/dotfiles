@@ -27,7 +27,7 @@ function PrintDiagnostics(opts, bufnr, line_nr, client_id)
     vim.api.nvim_echo({{diagnostic_message, "Normal"}}, false, {})
 end
 
-vim.cmd [[ autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="line"}) ]]
+vim.cmd [[ autocmd CursorHold * lua vim.diagnostic.open_float(nil, {focus=false, scope="line"}) ]]
 
 local signs = { Error = " ", Warn = "⚠ ", Hint = " ", Info = "🛈 " }
 for type, icon in pairs(signs) do
@@ -90,8 +90,8 @@ local on_attach = function(client, bufnr)
     buf_set_keymap('n', '<space>la', '<Cmd>lua vim.lsp.buf.code_action()<CR>', opts)
     buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
     buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+    buf_set_keymap('n', 'gc', '<Cmd>lua vim.lsp.buf.references()<CR>', opts)
     buf_set_keymap('n', 'K', '<Cmd>lua require("lspsaga.hover").render_hover_doc()<CR>', opts)
-    buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
     buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
     buf_set_keymap('n', '<C-f>', "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>", opts)
     buf_set_keymap('n', '<C-b>', "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>", opts)
@@ -129,6 +129,20 @@ nvim_lsp.rust_analyzer.setup{
 }
 
 nvim_lsp.tsserver.setup{
+    on_attach = on_attach,
+    capabilities = capabilities
+}
+
+nvim_lsp.emmet_ls.setup{
+    filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less' },
+    init_options = {
+      html = {
+        options = {
+          -- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
+          ["bem.enabled"] = true,
+        },
+      },
+    },
     on_attach = on_attach,
     capabilities = capabilities
 }

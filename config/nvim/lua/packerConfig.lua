@@ -12,6 +12,7 @@ require('packer').startup(
         use 'hrsh7th/nvim-cmp'
         use 'L3MON4D3/LuaSnip'
         use 'windwp/nvim-autopairs'
+        use 'kylechui/nvim-surround'
         --use 'nvim-lua/lsp_extensions.nvim'
         --use 'saadparwaiz1/cmp_luasnip'
         use 'windwp/nvim-ts-autotag'
@@ -35,10 +36,12 @@ require('packer').startup(
         }
         --use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
         use 'folke/which-key.nvim'
-        --use {
-        --    "folke/trouble.nvim",
-        --    requires = "kyazdani42/nvim-web-devicons",
-        --}
+        use {
+            "folke/trouble.nvim",
+            requires = "kyazdani42/nvim-web-devicons",
+        }
+        use 'mfussenegger/nvim-dap'
+        use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
     end
 )
 

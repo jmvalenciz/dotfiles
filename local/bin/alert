@@ -1,0 +1,8 @@
+#! /usr/bin/sh
+## put a new job in crontab
+#(crontab -l 2>/dev/null; echo "*/5 * * * * /path/to/job -with args") | crontab -
+
+
+trap "" HUP # Ignore NOHUP signal
+sleep $1
+notify-send "Alert!" "$2" -i fico!
