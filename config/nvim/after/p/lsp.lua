@@ -5,7 +5,7 @@ local sumneko_binary = "/usr/bin/lua-language-server"
 local sumneko_root_path = vim.fn.stdpath('cache')..'/lspconfig/sumneko_lua/lua-language-server'
 
 
-capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 function PrintDiagnostics(opts, bufnr, line_nr, client_id)
     opts = opts or {}
@@ -29,7 +29,7 @@ end
 
 vim.cmd [[ autocmd CursorHold * lua vim.diagnostic.open_float(nil, {focus=false, scope="line"}) ]]
 
-local signs = { Error = " ", Warn = "⚠ ", Hint = " ", Info = "🛈 " }
+local signs = { Error = " ", Warn = "⚠ ", Hint = " ", Info = " " }
 for type, icon in pairs(signs) do
     local hl = "DiagnosticSign" .. type
     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
@@ -87,14 +87,13 @@ local on_attach = function(client, bufnr)
     --vim.cmd[[autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()]]
     --vim.cmd[[autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()]]
     --vim.cmd[[autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()]]
-    buf_set_keymap('n', '<space>la', '<Cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+    buf_set_keymap('n', '<space>fa', '<Cmd>lua vim.lsp.buf.code_action()<CR>', opts)
     buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
     buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
     buf_set_keymap('n', 'gc', '<Cmd>lua vim.lsp.buf.references()<CR>', opts)
-    buf_set_keymap('n', 'K', '<Cmd>lua require("lspsaga.hover").render_hover_doc()<CR>', opts)
     buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-    buf_set_keymap('n', '<C-f>', "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>", opts)
-    buf_set_keymap('n', '<C-b>', "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>", opts)
+    --buf_set_keymap('n', '<C-f>', "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>", opts)
+    --buf_set_keymap('n', '<C-b>', "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>", opts)
     buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
     buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
     buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
@@ -134,7 +133,7 @@ nvim_lsp.tsserver.setup{
 }
 
 nvim_lsp.emmet_ls.setup{
-    filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less' },
+    filetypes = { 'html'},
     init_options = {
       html = {
         options = {
@@ -172,6 +171,10 @@ nvim_lsp.html.setup{
     },
     settings = {},
     single_file_support = true
+}
+
+nvim_lsp.cssls.setup {
+  capabilities = capabilities,
 }
 
 --nvim_lsp.emmet_ls.setup{
@@ -218,6 +221,16 @@ nvim_lsp.ccls.setup{
             excludeArgs = { "-frounding-math"} ;
         };
     }
+}
+
+nvim_lsp.dartls.setup{
+    on_attach = on_attach,
+    capabilities=capabilities
+}
+
+nvim_lsp.bufls.setup{
+    on_attach = on_attach,
+    capabilities = capabilities
 }
 
 nvim_lsp.sumneko_lua.setup{

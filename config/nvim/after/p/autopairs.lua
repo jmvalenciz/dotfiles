@@ -1,5 +1,6 @@
 local npairs = require("nvim-autopairs")
 local Rule = require('nvim-autopairs.rule')
+local ts_conds = require('nvim-autopairs.ts-conds')
 
 npairs.setup({
     disable_in_macro = true,
@@ -8,9 +9,6 @@ npairs.setup({
     ts_config = {
     }
 })
-
-local ts_conds = require('nvim-autopairs.ts-conds')
-
 
 -- press % => %% only while inside a comment or string
 npairs.add_rules({

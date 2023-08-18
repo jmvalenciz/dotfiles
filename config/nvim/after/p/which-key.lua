@@ -26,5 +26,6 @@ wk.register({
             t = {"<cmd>lua require'dap'.terminate()<cr>", "Terminate"},
             u = {"<cmd> lua require('dapui').toggle()<cr>", "Toggle UI"}
         }
-    }
+    },
+    h = {"<cmd>lua vim.lsp.buf.hover()<cr>","hover"}
 },{prefix="<leader>"})

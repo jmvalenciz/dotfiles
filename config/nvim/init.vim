@@ -7,6 +7,10 @@
 "--                                                      /____/    --
 "--------------------------------------------------------------------
 
+set foldmethod=expr
+set foldlevel=99
+set foldexpr=nvim_treesitter#foldexpr()
+
 autocmd BufNewFile,BufRead *.md :set filetype=markdown
 autocmd BufNewFile,BufRead *.rasi :set filetype=css
 autocmd BufNewFile,BufRead *.tf :set filetype=terraform
@@ -20,8 +24,21 @@ hi Error gui=undercurl
 hi Warning gui=underline
 lua << EOF
 
---Remap space as leader key
-vim.cmd[[nnoremap <SPACE> <Nop>]]
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
+----Remap space as leader key
+--vim.cmd[[nnoremap <SPACE> <Nop>]]
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
@@ -58,9 +75,8 @@ vim.o.background = 'dark'
 vim.o.wrap= true
 vim.o.showmode = false
 vim.o.autoindent = true
+vim.g.editorconfig = true
 --vim.cmd("let vimwiki.nested_syntaxes = {'python': 'python', 'c++': 'cpp'}")
-require('packerConfig')
-
 
 -- proper syntax highlighting for Mardown
 vim.cmd('au BufNewFile,BufReadPost *.md set filetype=markdown')
@@ -79,9 +95,7 @@ vim.cmd('autocmd TermOpen * setlocal nonumber norelativenumber')
 --vim.cmd('syntax enable')
 vim.cmd('filetype plugin indent on')
 
--- Auto compile when there are changes in plugins.lua
-vim.cmd 'autocmd BufWritePost plugins.lua PackerCompile' 
-
+require('lazymanager')
 
 EOF
 

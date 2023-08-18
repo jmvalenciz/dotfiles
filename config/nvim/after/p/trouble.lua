@@ -28,4 +28,3 @@ require("trouble").setup {
     indent_lines = true,
     --auto_open = true
 }
-
